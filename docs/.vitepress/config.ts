@@ -18,6 +18,7 @@ export default defineConfig({
         text: 'Examples',
         items: [
           { text: 'Registration Form', link: '/examples/form' },
+          { text: 'Theming', link: '/examples/theming' },
         ],
       },
       {
