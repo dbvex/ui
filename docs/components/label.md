@@ -15,11 +15,25 @@ demo-preview=../demos/LabelBasic.vue
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `value` | `string` | `''` | Label text (also settable via default slot) |
-| `backgroundColor` | `string` | `blue-grey-200` | CSS variable name for background |
-| `textColor` | `string` | `blue-grey-1200` | CSS variable name for text color |
+| `backgroundColor` | `string` | `sc-color-disabled-bg` | CSS variable name (without `--`) for background |
+| `textColor` | `string` | `sc-color-text-secondary` | CSS variable name (without `--`) for text color |
 
 ## Slots
 
 | Slot | Description |
 |------|-------------|
 | `default` | Custom label content (overrides `value` prop) |
+
+## Examples
+
+```vue
+<BaseLabel value="Default" />
+<BaseLabel value="Primary"
+  background-color="sc-color-primary"
+  text-color="sc-color-text-on-primary"
+/>
+<BaseLabel value="Danger"
+  background-color="sc-color-danger-bg"
+  text-color="sc-color-danger"
+/>
+```

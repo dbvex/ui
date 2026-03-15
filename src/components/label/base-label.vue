@@ -1,43 +1,39 @@
 <template>
-    <transition name="base-label-fade">
-        <span
-            :class="[
-                'base-label'
-            ]"
-            :style="labelStyles"
-        >
-            <slot>{{ value }}</slot>
-        </span>
-    </transition>
+  <span class="base-label" :style="labelStyles">
+    <slot>{{ value }}</slot>
+  </span>
 </template>
 
-<script setup name="base-label" lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue'
 
 interface Props {
-    value?: string,
-    backgroundColor?: string,
-    textColor?: string
+  value?: string
+  backgroundColor?: string
+  textColor?: string
 }
+
 const props = withDefaults(defineProps<Props>(), {
-    value: '',
-    backgroundColor: 'blue-grey-200',
-    textColor: 'blue-grey-1200'
+  value: '',
+  backgroundColor: 'sc-color-disabled-bg',
+  textColor: 'sc-color-text-secondary',
 })
 
 const labelStyles = computed(() => ({
-    backgroundColor: `var(--${props.backgroundColor})`,
-    color: `var(--${props.textColor})`
+  backgroundColor: `var(--${props.backgroundColor})`,
+  color: `var(--${props.textColor})`,
 }))
 </script>
 
-<style lang="less">
+<style scoped>
 .base-label {
-    height: 24px;
-    border-radius: 12px;
-    padding: 4px 8px;
-    gap: 10px;
-    font-size: 12px;
-    text-align: center;
+  display: inline-flex;
+  align-items: center;
+  height: var(--sc-height-sm);
+  border-radius: var(--sc-radius-full);
+  padding: 0 var(--sc-space-3);
+  font-size: var(--sc-text-xs);
+  font-weight: var(--sc-font-medium);
+  white-space: nowrap;
 }
 </style>
