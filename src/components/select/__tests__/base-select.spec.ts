@@ -155,4 +155,62 @@ describe('BaseSelect', () => {
     expect(groupLabel.attributes('role')).toBe('presentation')
     expect(groupLabel.attributes('aria-hidden')).toBe('true')
   })
+
+  it('ArrowDown when already open moves focus down', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'ArrowDown' })
+    // open, focused on first — ArrowDown again moves to second
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'ArrowDown' })
+    expect(wrapper.find('.base-select__option--focused').text()).toBe('React')
+  })
+
+  it('ArrowUp opens listbox', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'ArrowUp' })
+    expect(wrapper.find('.base-select__listbox').exists()).toBe(true)
+  })
+
+  it('Space key opens listbox', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: ' ' })
+    expect(wrapper.find('.base-select__listbox').exists()).toBe(true)
+  })
+
+  it('Enter in listbox selects focused option', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'ArrowDown' })
+    await wrapper.find('[role="listbox"]').trigger('keydown', { key: 'Enter' })
+    expect(wrapper.emitted('update:modelValue')?.[0]).toEqual(['vue'])
+  })
+
+  it('Escape in listbox closes it', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    await wrapper.find('[role="listbox"]').trigger('keydown', { key: 'Escape' })
+    expect(wrapper.find('.base-select__listbox').exists()).toBe(false)
+  })
+
+  it('Home key focuses first option', async () => {
+    const wrapper = mount(BaseSelect, { props: { options, modelValue: 'angular' } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    await wrapper.find('[role="listbox"]').trigger('keydown', { key: 'Home' })
+    expect(wrapper.find('.base-select__option--focused').text()).toBe('Vue')
+  })
+
+  it('End key focuses last option', async () => {
+    const wrapper = mount(BaseSelect, { props: { options } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    await wrapper.find('[role="listbox"]').trigger('keydown', { key: 'End' })
+    expect(wrapper.find('.base-select__option--focused').text()).toBe('Angular')
+  })
+
+  it('outside click closes listbox', async () => {
+    const wrapper = mount(BaseSelect, { props: { options }, attachTo: document.body })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    expect(wrapper.find('.base-select__listbox').exists()).toBe(true)
+    document.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }))
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find('.base-select__listbox').exists()).toBe(false)
+    wrapper.unmount()
+  })
 })

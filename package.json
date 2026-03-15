@@ -37,7 +37,8 @@
     "type-check": "vue-tsc --noEmit",
     "build": "vite build",
     "test:unit": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@vitepress-demo-preview/component": "^2.6.2",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
     "ajv": "^8.18.0",
     "jsdom": "^29.0.0",

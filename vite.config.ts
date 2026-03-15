@@ -18,6 +18,18 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     exclude: [...configDefaults.exclude],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      include: ['src/components/**/*.vue', 'src/composables/**/*.ts'],
+      exclude: ['src/**/*.spec.ts', 'src/**/*.d.ts'],
+      thresholds: {
+        lines: 80,
+        branches: 80,
+        functions: 80,
+        statements: 80,
+      },
+    },
   },
   optimizeDeps: {
     exclude: ['vue-demi'],
