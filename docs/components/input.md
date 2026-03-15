@@ -2,24 +2,29 @@
 
 Input component with v-model, validation state, and prefix/suffix slots.
 
-## Usage
+## Basic
 
-```vue
-<BaseInput v-model="email" label="Email" placeholder="you@example.com" />
+:::preview
 
-<BaseInput
-  v-model="username"
-  label="Username"
-  required
-  :error="!!errors.username"
-  :error-message="errors.username"
-/>
+demo-preview=../demos/InputBasic.vue
 
-<BaseInput v-model="price" label="Price">
-  <template #prefix>$</template>
-  <template #suffix>USD</template>
-</BaseInput>
-```
+:::
+
+## Validation
+
+:::preview
+
+demo-preview=../demos/InputValidation.vue
+
+:::
+
+## Prefix & Suffix
+
+:::preview
+
+demo-preview=../demos/InputSlots.vue
+
+:::
 
 ## Props
 
@@ -34,7 +39,7 @@ Input component with v-model, validation state, and prefix/suffix slots.
 | `required` | `boolean` | `false` | Shows asterisk on label |
 | `error` | `boolean` | `false` | Applies error styling |
 | `errorMessage` | `string` | — | Error text below input |
-| `hint` | `string` | — | Hint text below input (hidden when errorMessage is set) |
+| `hint` | `string` | — | Hint text (hidden when errorMessage is set) |
 
 ## Events
 

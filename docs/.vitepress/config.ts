@@ -1,9 +1,16 @@
 import { defineConfig } from 'vitepress'
+import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 
 export default defineConfig({
   title: 'shared-components',
   description: 'Vue 3 UI component library',
   base: '/shared-components/',
+  markdown: {
+    config(md) {
+      md.use(containerPreview)
+      md.use(componentPreview)
+    },
+  },
   themeConfig: {
     nav: [{ text: 'Components', link: '/components/' }],
     sidebar: [

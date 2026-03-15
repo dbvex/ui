@@ -2,13 +2,29 @@
 
 Button component with variants, sizes, and loading state.
 
-## Usage
+## Variants
 
-```vue
-<BaseButton variant="primary" size="md" @click="save">Save</BaseButton>
-<BaseButton variant="danger" :loading="isDeleting">Delete</BaseButton>
-<BaseButton variant="secondary" :disabled="true">Disabled</BaseButton>
-```
+:::preview
+
+demo-preview=../demos/ButtonVariants.vue
+
+:::
+
+## Sizes
+
+:::preview
+
+demo-preview=../demos/ButtonSizes.vue
+
+:::
+
+## States
+
+:::preview
+
+demo-preview=../demos/ButtonStates.vue
+
+:::
 
 ## Props
 
@@ -25,7 +41,7 @@ Button component with variants, sizes, and loading state.
 
 | Event | Payload | Description |
 |-------|---------|-------------|
-| `click` | `MouseEvent` | Emitted on click (not emitted when disabled or loading) |
+| `click` | `MouseEvent` | Emitted on click (not when disabled or loading) |
 
 ## Slots
 
