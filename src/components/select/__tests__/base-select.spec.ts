@@ -96,4 +96,63 @@ describe('BaseSelect', () => {
     await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'Escape' })
     expect(wrapper.find('.base-select__listbox').exists()).toBe(false)
   })
+
+  it('disabled option has aria-disabled and --disabled class', async () => {
+    const opts = [
+      { label: 'Vue', value: 'vue' },
+      { label: 'React', value: 'react', disabled: true },
+    ]
+    const wrapper = mount(BaseSelect, { props: { options: opts } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    const disabledOption = wrapper.findAll('.base-select__option')[1]
+    expect(disabledOption.classes()).toContain('base-select__option--disabled')
+    expect(disabledOption.attributes('aria-disabled')).toBe('true')
+  })
+
+  it('disabled option does not emit on click', async () => {
+    const opts = [
+      { label: 'Vue', value: 'vue' },
+      { label: 'React', value: 'react', disabled: true },
+    ]
+    const wrapper = mount(BaseSelect, { props: { options: opts } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    await wrapper.findAll('.base-select__option')[1].trigger('click')
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('keyboard navigation skips disabled options', async () => {
+    const opts = [
+      { label: 'Vue', value: 'vue' },
+      { label: 'React', value: 'react', disabled: true },
+      { label: 'Angular', value: 'angular' },
+    ]
+    const wrapper = mount(BaseSelect, { props: { options: opts } })
+    await wrapper.find('.base-select__trigger').trigger('keydown', { key: 'ArrowDown' })
+    // focused on first selectable (vue), move down — should skip react → angular
+    await wrapper.find('[role="listbox"]').trigger('keydown', { key: 'ArrowDown' })
+    expect(wrapper.find('.base-select__option--focused').text()).toBe('Angular')
+  })
+
+  it('renders group labels in listbox', async () => {
+    const opts = [
+      { label: 'Vue', value: 'vue', group: 'Frontend' },
+      { label: 'React', value: 'react', group: 'Frontend' },
+      { label: 'Django', value: 'django', group: 'Backend' },
+    ]
+    const wrapper = mount(BaseSelect, { props: { options: opts } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    const groups = wrapper.findAll('.base-select__group-label')
+    expect(groups).toHaveLength(2)
+    expect(groups[0].text()).toBe('Frontend')
+    expect(groups[1].text()).toBe('Backend')
+  })
+
+  it('group labels have role="presentation" and aria-hidden', async () => {
+    const opts = [{ label: 'Vue', value: 'vue', group: 'JS' }]
+    const wrapper = mount(BaseSelect, { props: { options: opts } })
+    await wrapper.find('.base-select__trigger').trigger('click')
+    const groupLabel = wrapper.find('.base-select__group-label')
+    expect(groupLabel.attributes('role')).toBe('presentation')
+    expect(groupLabel.attributes('aria-hidden')).toBe('true')
+  })
 })

@@ -36,23 +36,32 @@
           :aria-labelledby="fieldId"
           @keydown="onListboxKeydown"
         >
-          <li
-            v-for="option in options"
-            :key="String(option.value)"
-            :id="optionId(option.value)"
-            role="option"
-            class="base-select__option"
-            :class="{
-              'base-select__option--selected': option.value === modelValue,
-              'base-select__option--focused': option.value === focusedValue,
-            }"
-            :aria-selected="option.value === modelValue"
-            :tabindex="option.value === focusedValue ? 0 : -1"
-            @click="selectOption(option.value)"
-            @mouseenter="focusedValue = option.value"
-          >
-            <slot name="option" :option="option">{{ option.label }}</slot>
-          </li>
+          <template v-for="item in flatItems" :key="item.type === 'group' ? `group-${item.label}` : String(item.option.value)">
+            <li
+              v-if="item.type === 'group'"
+              role="presentation"
+              class="base-select__group-label"
+              aria-hidden="true"
+            >{{ item.label }}</li>
+            <li
+              v-else
+              :id="optionId(item.option.value)"
+              role="option"
+              class="base-select__option"
+              :class="{
+                'base-select__option--selected': item.option.value === modelValue,
+                'base-select__option--focused': item.option.value === focusedValue,
+                'base-select__option--disabled': item.option.disabled,
+              }"
+              :aria-selected="item.option.value === modelValue"
+              :aria-disabled="item.option.disabled || undefined"
+              :tabindex="item.option.value === focusedValue ? 0 : -1"
+              @click="!item.option.disabled && selectOption(item.option.value)"
+              @mouseenter="!item.option.disabled && (focusedValue = item.option.value)"
+            >
+              <slot name="option" :option="item.option">{{ item.option.label }}</slot>
+            </li>
+          </template>
         </ul>
       </Transition>
     </div>
@@ -72,6 +81,10 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useFormField } from '../../composables/useFormField'
 import type { BaseSelectProps, SelectOption } from '../../types'
+
+type ListItem =
+  | { type: 'group'; label: string }
+  | { type: 'option'; option: SelectOption }
 
 interface Props extends BaseSelectProps {
   options: SelectOption[]
@@ -103,6 +116,21 @@ const selectedLabel = computed(
   () => props.options.find((o) => o.value === props.modelValue)?.label ?? '',
 )
 
+const flatItems = computed<ListItem[]>(() => {
+  const items: ListItem[] = []
+  let lastGroup: string | undefined
+  for (const option of props.options) {
+    if (option.group !== undefined && option.group !== lastGroup) {
+      items.push({ type: 'group', label: option.group })
+      lastGroup = option.group
+    }
+    items.push({ type: 'option', option })
+  }
+  return items
+})
+
+const selectableOptions = computed(() => props.options.filter((o) => !o.disabled))
+
 const wrapperClasses = computed(() => [
   'base-select',
   {
@@ -115,7 +143,7 @@ const wrapperClasses = computed(() => [
 function toggleOpen() {
   if (props.disabled) return
   isOpen.value = !isOpen.value
-  if (isOpen.value) focusedValue.value = props.modelValue ?? props.options[0]?.value ?? null
+  if (isOpen.value) focusedValue.value = props.modelValue ?? selectableOptions.value[0]?.value ?? null
 }
 
 function selectOption(value: string | number) {
@@ -139,19 +167,20 @@ function onListboxKeydown(e: KeyboardEvent) {
   }
   if (e.key === 'ArrowDown') { e.preventDefault(); moveFocus(1) }
   if (e.key === 'ArrowUp') { e.preventDefault(); moveFocus(-1) }
-  if (e.key === 'Home') { e.preventDefault(); focusedValue.value = props.options[0]?.value ?? null }
-  if (e.key === 'End') { e.preventDefault(); focusedValue.value = props.options[props.options.length - 1]?.value ?? null }
+  if (e.key === 'Home') { e.preventDefault(); focusedValue.value = selectableOptions.value[0]?.value ?? null }
+  if (e.key === 'End') { e.preventDefault(); focusedValue.value = selectableOptions.value[selectableOptions.value.length - 1]?.value ?? null }
 }
 
 function openAndMoveFocus(dir: 1 | -1) {
-  if (!isOpen.value) { isOpen.value = true; focusedValue.value = props.modelValue ?? props.options[0]?.value ?? null }
+  if (!isOpen.value) { isOpen.value = true; focusedValue.value = props.modelValue ?? selectableOptions.value[0]?.value ?? null }
   else moveFocus(dir)
 }
 
 function moveFocus(dir: 1 | -1) {
-  const idx = props.options.findIndex((o) => o.value === focusedValue.value)
-  const next = Math.max(0, Math.min(props.options.length - 1, idx + dir))
-  focusedValue.value = props.options[next]?.value ?? null
+  const opts = selectableOptions.value
+  const idx = opts.findIndex((o) => o.value === focusedValue.value)
+  const next = Math.max(0, Math.min(opts.length - 1, idx + dir))
+  focusedValue.value = opts[next]?.value ?? null
 }
 
 function onOutsideClick(e: MouseEvent) {
@@ -278,6 +307,22 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', onOutsideClick))
 .base-select__option--selected {
   color: var(--sc-color-primary);
   font-weight: var(--sc-font-medium);
+}
+
+.base-select__option--disabled {
+  color: var(--sc-color-placeholder);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.base-select__group-label {
+  padding: var(--sc-space-1) var(--sc-space-3);
+  font-size: var(--sc-text-xs);
+  font-weight: var(--sc-font-medium);
+  color: var(--sc-color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: default;
 }
 
 .base-select__error {
