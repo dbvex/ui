@@ -86,6 +86,7 @@ const emit = defineEmits<{
 const isChecked = computed(() => isArrayValue() ? isArrayIncludes() : props.modelValue || Boolean(props.value))
 
 const toggleValue = () => {
+    if (props.disabled) return
     if (isArrayValue()) {
         setArray()
     } else if (typeof props.modelValue === 'boolean') {
@@ -180,8 +181,17 @@ const isArrayValue = () => Array.isArray(props.modelValue)
         &:hover::before {
             border: 1px solid var(--blue-grey-1500);
         }
+
+        &:focus-within::before {
+            outline: 2px solid var(--cold-red-1200);
+            outline-offset: 2px;
+        }
     }
 
+}
+
+.black .base-checkbox__icon:focus-within::before {
+    outline-color: var(--blue-grey-1700);
 }
 
 .disabled.red .base-checkbox__icon::before,

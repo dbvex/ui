@@ -69,4 +69,42 @@ describe('components/checkbox', () => {
         const res = wrapper.emitted('update:modelValue');
         expect(res).toEqual(undefined)
     })
+
+    test('renders indeterminate icon (dash svg)', () => {
+        const wrapper = mount(checkbox, {
+            props: { modelValue: false, indeterminate: true },
+        })
+        expect(wrapper.find('rect').exists()).toBe(true)
+    })
+
+    test('applies red class by default', () => {
+        const wrapper = mount(checkbox, {
+            props: { modelValue: false },
+        })
+        expect(wrapper.classes()).toContain('red')
+    })
+
+    test('applies black class when theme is black', () => {
+        const wrapper = mount(checkbox, {
+            props: { modelValue: false, theme: 'black' },
+        })
+        expect(wrapper.classes()).toContain('black')
+    })
+
+    test('disabled prevents toggle', async () => {
+        const wrapper = mount(checkbox, {
+            props: { modelValue: false, disabled: true },
+        })
+        await wrapper.find('input').trigger('click')
+        expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+    })
+
+    test('Space key triggers toggle', async () => {
+        const wrapper = mount(checkbox, {
+            props: { modelValue: false },
+        })
+        await wrapper.find('input').trigger('keydown.space')
+        const [[value]] = wrapper.emitted('update:modelValue') || [[]]
+        expect(value).toEqual(true)
+    })
 })

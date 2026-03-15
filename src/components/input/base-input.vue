@@ -98,7 +98,7 @@ function onInput(event: Event) {
 .base-input {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--sc-space-1);
 }
 
 .base-input__label {

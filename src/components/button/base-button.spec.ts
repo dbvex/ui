@@ -41,6 +41,27 @@ describe('BaseButton', () => {
     expect(wrapper.emitted('click')).toBeUndefined()
   })
 
+  it('does not emit click when loading', async () => {
+    const wrapper = mount(BaseButton, { props: { loading: true } })
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeUndefined()
+  })
+
+  it('sets aria-disabled when disabled', () => {
+    const wrapper = mount(BaseButton, { props: { disabled: true } })
+    expect(wrapper.attributes('aria-disabled')).toBe('true')
+  })
+
+  it('sets aria-disabled when loading', () => {
+    const wrapper = mount(BaseButton, { props: { loading: true } })
+    expect(wrapper.attributes('aria-disabled')).toBe('true')
+  })
+
+  it('does not set aria-disabled by default', () => {
+    const wrapper = mount(BaseButton)
+    expect(wrapper.attributes('aria-disabled')).toBeUndefined()
+  })
+
   it('applies block class', () => {
     const wrapper = mount(BaseButton, { props: { block: true } })
     expect(wrapper.classes()).toContain('base-button--block')

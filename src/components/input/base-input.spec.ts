@@ -47,6 +47,12 @@ describe('BaseInput', () => {
     expect(wrapper.emitted('blur')).toHaveLength(1)
   })
 
+  it('emits focus event', async () => {
+    const wrapper = mount(BaseInput)
+    await wrapper.find('input').trigger('focus')
+    expect(wrapper.emitted('focus')).toHaveLength(1)
+  })
+
   it('renders prefix slot', () => {
     const wrapper = mount(BaseInput, { slots: { prefix: '@' } })
     expect(wrapper.find('.base-input__prefix').text()).toBe('@')

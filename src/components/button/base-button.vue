@@ -2,8 +2,9 @@
   <button
     :class="buttonClasses"
     :disabled="disabled || loading"
+    :aria-disabled="disabled || loading || undefined"
     :type="type"
-    @click="emit('click', $event)"
+    @click="!disabled && !loading && emit('click', $event)"
   >
     <span v-if="loading" class="base-button__spinner" aria-hidden="true" />
     <slot />
