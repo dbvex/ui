@@ -1,4 +1,3 @@
-import components from './components'
-import './core/styles.css'
-
-export default components
+export { default as BaseCheckbox } from './components/checkbox/base-checkbox.vue'
+export { default as BaseLabel } from './components/label/base-label.vue'
+export { default as BaseButton } from './components/button/base-button.vue'
