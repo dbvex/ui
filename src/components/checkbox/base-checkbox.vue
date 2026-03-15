@@ -21,7 +21,11 @@
                 type="checkbox"
                 class="base-checkbox__input"
                 :indeterminate.prop="indeterminate"
+                :aria-checked="indeterminate ? 'mixed' : isChecked"
+                :aria-invalid="props.error || undefined"
+                :aria-disabled="props.disabled || undefined"
                 @click="toggleValue()"
+                @keydown.space.prevent="toggleValue()"
             >
       </span>
 
