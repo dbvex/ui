@@ -11,6 +11,8 @@ Vue 3 UI component library with TypeScript strict mode, design token system, and
 
 **[Live docs →](https://dbvex.github.io/ui/)**
 
+![Preview](./docs/preview.png)
+
 ---
 
 ## Components
