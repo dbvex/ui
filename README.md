@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@dbvex/ui?color=cb3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/@dbvex/ui)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 ![Vue 3](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-52%20tests-6e9f18?logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-75%20tests-6e9f18?logo=vitest&logoColor=white)
 ![VitePress](https://img.shields.io/badge/VitePress-docs-646cff?logo=vite&logoColor=white)
 ![A11y](https://img.shields.io/badge/a11y-WCAG%202.1-0066cc)
 
@@ -39,11 +39,26 @@ npm run test:unit  # 52 tests
 
 ## Usage
 
+```ts
+// Full import
+import { BaseButton, BaseInput, BaseSelect } from '@dbvex/ui'
+
+// Sub-path import (tree-shaking friendly)
+import { BaseButton } from '@dbvex/ui/button'
+import { BaseInput } from '@dbvex/ui/input'
+import { BaseSelect } from '@dbvex/ui/select'
+import { BaseCheckbox } from '@dbvex/ui/checkbox'
+import { BaseLabel } from '@dbvex/ui/label'
+
+// Styles (import once in your entry file)
+import '@dbvex/ui/dist/ui.css'
+```
+
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseInput, BaseSelect, BaseButton } from './src'
-import type { SelectOption } from './src'
+import { BaseInput, BaseSelect, BaseButton } from '@dbvex/ui'
+import type { SelectOption } from '@dbvex/ui'
 
 const email = ref('')
 const role = ref<string | null>(null)
@@ -105,10 +120,10 @@ src/
 
 | File | Tests |
 |------|-------|
-| `BaseButton.spec` | 8 |
-| `BaseInput.spec` | 10 |
-| `BaseCheckbox.spec` | 9 |
-| `BaseLabel.spec` | 9 (implied) |
-| `BaseSelect.spec` | 14 |
+| `BaseButton.spec` | 12 |
+| `BaseInput.spec` | 11 |
+| `BaseCheckbox.spec` | 12 |
+| `BaseLabel.spec` | 3 |
+| `BaseSelect.spec` | 26 |
 | `useFormField.spec` | 11 |
-| **Total** | **52** |
+| **Total** | **75** |

@@ -28,6 +28,29 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/ui.es.js",
       "require": "./dist/ui.umd.js"
+    },
+    "./button": {
+      "types": "./dist/types/components/button/index.d.ts",
+      "import": "./dist/ui.es.js"
+    },
+    "./input": {
+      "types": "./dist/types/components/input/index.d.ts",
+      "import": "./dist/ui.es.js"
+    },
+    "./select": {
+      "types": "./dist/types/components/select/index.d.ts",
+      "import": "./dist/ui.es.js"
+    },
+    "./checkbox": {
+      "types": "./dist/types/components/checkbox/index.d.ts",
+      "import": "./dist/ui.es.js"
+    },
+    "./label": {
+      "types": "./dist/types/components/label/index.d.ts",
+      "import": "./dist/ui.es.js"
+    },
+    "./styles": {
+      "import": "./dist/ui.css"
     }
   },
   "scripts": {
