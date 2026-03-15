@@ -21,7 +21,7 @@
                 type="checkbox"
                 class="base-checkbox__input"
                 :indeterminate.prop="indeterminate"
-                :aria-checked="indeterminate ? 'mixed' : isChecked"
+                :aria-checked="indeterminate ? 'mixed' : (isChecked as boolean)"
                 :aria-invalid="props.error || undefined"
                 :aria-disabled="props.disabled || undefined"
                 @click="toggleValue()"
