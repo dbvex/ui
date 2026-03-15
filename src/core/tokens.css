@@ -1,0 +1,97 @@
+/* =============================================================
+   Design Tokens — shared-components
+   Single source of truth for all design values.
+   Components reference only var(--sc-*) — never raw values.
+   ============================================================= */
+
+:root {
+  /* --- Spacing (4px base grid) --- */
+  --sc-space-1:   4px;
+  --sc-space-1-5: 6px;
+  --sc-space-2:   8px;
+  --sc-space-2-5: 10px;
+  --sc-space-3:   12px;
+  --sc-space-3-5: 14px;
+  --sc-space-4:   16px;
+  --sc-space-5:   20px;
+  --sc-space-6:   24px;
+  --sc-space-8:   32px;
+
+  /* --- Typography --- */
+  --sc-text-xs:   0.75rem;   /* 12px — labels, hints */
+  --sc-text-sm:   0.875rem;  /* 14px — inputs, buttons */
+  --sc-text-base: 1rem;      /* 16px — body */
+
+  --sc-leading-tight:  1.2;
+  --sc-leading-normal: 1.5;
+
+  --sc-font-normal:  400;
+  --sc-font-medium:  500;
+  --sc-font-semibold: 600;
+
+  /* --- Border radius --- */
+  --sc-radius-sm:    4px;   /* tags */
+  --sc-radius-base:  6px;   /* buttons */
+  --sc-radius-input: 8px;   /* inputs, selects */
+  --sc-radius-full:  100px; /* pills */
+
+  /* --- Transitions --- */
+  --sc-transition: 0.15s ease;
+
+  /* --- Component heights --- */
+  --sc-height-sm: 28px;
+  --sc-height-md: 36px;
+  --sc-height-lg: 44px;
+
+  /* --- Semantic colors: Light theme --- */
+  --sc-color-primary:        #3b82f6;
+  --sc-color-primary-hover:  #2563eb;
+  --sc-color-danger:         #ef4444;
+  --sc-color-danger-hover:   #dc2626;
+  --sc-color-danger-bg:      #fef2f2;
+
+  --sc-color-text:           #111827;
+  --sc-color-text-secondary: #6b7280;
+  --sc-color-placeholder:    #9ca3af;
+  --sc-color-text-on-primary: #ffffff;
+
+  --sc-color-bg:             #ffffff;
+  --sc-color-surface:        #ffffff;
+  --sc-color-border:         #d1d5db;
+  --sc-color-border-hover:   #9ca3af;
+  --sc-color-disabled-bg:    #f3f4f6;
+  --sc-color-ghost-hover:    #f3f4f6;
+
+  /* --- Shadows --- */
+  --sc-shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sc-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.08);
+
+  /* --- Focus ring --- */
+  --sc-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Semantic colors: Dark theme --- */
+.dark {
+  --sc-color-primary:        #60a5fa;
+  --sc-color-primary-hover:  #93c5fd;
+  --sc-color-danger:         #f87171;
+  --sc-color-danger-hover:   #fca5a5;
+  --sc-color-danger-bg:      #1f1010;
+
+  --sc-color-text:           #f9fafb;
+  --sc-color-text-secondary: #9ca3af;
+  --sc-color-placeholder:    #6b7280;
+  --sc-color-text-on-primary: #ffffff;
+
+  --sc-color-bg:             #111827;
+  --sc-color-surface:        #1f2937;
+  --sc-color-border:         #374151;
+  --sc-color-border-hover:   #6b7280;
+  --sc-color-disabled-bg:    #1f2937;
+  --sc-color-ghost-hover:    #1f2937;
+
+  --sc-shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --sc-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.4);
+
+  --sc-focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
