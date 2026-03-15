@@ -12,19 +12,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { BaseButtonProps } from '../../types'
 
-type Variant = 'primary' | 'secondary' | 'danger' | 'ghost'
-type Size = 'sm' | 'md' | 'lg'
-type ButtonType = 'button' | 'submit' | 'reset'
-
-interface Props {
-  variant?: Variant
-  size?: Size
-  type?: ButtonType
-  disabled?: boolean
-  loading?: boolean
-  block?: boolean
-}
+type Props = BaseButtonProps
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',

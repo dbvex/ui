@@ -71,22 +71,10 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useFormField } from '../../composables/useFormField'
+import type { BaseSelectProps, SelectOption } from '../../types'
 
-export interface SelectOption<T = string | number> {
-  label: string
-  value: T
-}
-
-interface Props {
-  modelValue?: string | number | null
+interface Props extends BaseSelectProps {
   options: SelectOption[]
-  label?: string
-  placeholder?: string
-  disabled?: boolean
-  required?: boolean
-  error?: boolean
-  errorMessage?: string
-  hint?: string
 }
 
 defineOptions({ inheritAttrs: false })
