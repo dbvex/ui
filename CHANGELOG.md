@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dbvex/ui/compare/v1.0.0...v1.0.1) (2026-03-15)
+
+
+### Bug Fixes
+
+* normalize repository url in package.json ([2d6e6dc](https://github.com/dbvex/ui/commit/2d6e6dc40bc8f7a423710dfdb71b3a00bde181af))
+
 # 1.0.0 (2026-03-15)
 
 

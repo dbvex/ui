@@ -1,6 +1,6 @@
 {
   "name": "@dbvex/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Vue 3 UI component library — TypeScript strict, design tokens, a11y",
   "author": "dbvex",
