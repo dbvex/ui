@@ -99,76 +99,76 @@ function onInput(event: Event) {
 }
 
 .base-input__label {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-text, #374151);
+  font-size: var(--sc-text-xs);
+  font-weight: var(--sc-font-medium);
+  color: var(--sc-color-text);
 }
 
 .base-input__required {
-  color: var(--color-danger, #ef4444);
-  margin-left: 2px;
+  color: var(--sc-color-danger);
+  margin-left: var(--sc-space-1);
 }
 
 .base-input__field-wrap {
   display: flex;
   align-items: center;
-  border: 1px solid var(--color-border, #d1d5db);
-  border-radius: 6px;
-  background-color: var(--color-input-bg, #ffffff);
-  transition: border-color 0.15s;
+  border: 1px solid var(--sc-color-border);
+  border-radius: var(--sc-radius-input);
+  background-color: var(--sc-color-surface);
+  transition: border-color var(--sc-transition);
   overflow: hidden;
 }
 
 .base-input__field-wrap:focus-within {
-  border-color: var(--color-primary, #3b82f6);
-  outline: 2px solid color-mix(in srgb, var(--color-primary, #3b82f6) 20%, transparent);
+  border-color: var(--sc-color-primary);
+  box-shadow: var(--sc-focus-ring);
 }
 
 .base-input--error .base-input__field-wrap {
-  border-color: var(--color-danger, #ef4444);
+  border-color: var(--sc-color-danger);
 }
 
 .base-input__field {
   flex: 1;
-  padding: 8px 12px;
+  padding: var(--sc-space-2) var(--sc-space-3);
   border: none;
   outline: none;
-  font-size: 14px;
+  font-size: var(--sc-text-sm);
   background: transparent;
-  color: var(--color-text, #374151);
+  color: var(--sc-color-text);
   min-width: 0;
 }
 
 .base-input__field::placeholder {
-  color: var(--color-placeholder, #9ca3af);
+  color: var(--sc-color-placeholder);
 }
 
 .base-input__prefix,
 .base-input__suffix {
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  color: var(--color-placeholder, #9ca3af);
+  padding: 0 var(--sc-space-2-5);
+  color: var(--sc-color-placeholder);
   flex-shrink: 0;
 }
 
 .base-input--disabled .base-input__field-wrap {
-  background-color: var(--color-disabled-bg, #f3f4f6);
+  background-color: var(--sc-color-disabled-bg);
   cursor: not-allowed;
 }
 
 .base-input--disabled .base-input__field {
   cursor: not-allowed;
-  color: var(--color-placeholder, #9ca3af);
+  color: var(--sc-color-placeholder);
 }
 
 .base-input__error {
-  font-size: 12px;
-  color: var(--color-danger, #ef4444);
+  font-size: var(--sc-text-xs);
+  color: var(--sc-color-danger);
 }
 
 .base-input__hint {
-  font-size: 12px;
-  color: var(--color-placeholder, #9ca3af);
+  font-size: var(--sc-text-xs);
+  color: var(--sc-color-text-secondary);
 }
 </style>

@@ -56,57 +56,56 @@ const buttonClasses = computed(() => [
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--sc-space-2);
   border: none;
-  border-radius: 6px;
-  font-weight: 500;
+  border-radius: var(--sc-radius-base);
+  font-weight: var(--sc-font-medium);
   cursor: pointer;
-  transition: background-color 0.15s, opacity 0.15s;
+  transition: background-color var(--sc-transition), opacity var(--sc-transition);
   white-space: nowrap;
+  line-height: var(--sc-leading-tight);
 }
 
-.base-button--block {
-  width: 100%;
-}
+.base-button--block { width: 100%; }
 
 /* Sizes */
-.base-button--sm { padding: 4px 12px; font-size: 12px; height: 28px; }
-.base-button--md { padding: 8px 16px; font-size: 14px; height: 36px; }
-.base-button--lg { padding: 12px 24px; font-size: 16px; height: 44px; }
+.base-button--sm { padding: var(--sc-space-1) var(--sc-space-3); font-size: var(--sc-text-xs); height: var(--sc-height-sm); }
+.base-button--md { padding: var(--sc-space-2) var(--sc-space-4); font-size: var(--sc-text-sm); height: var(--sc-height-md); }
+.base-button--lg { padding: var(--sc-space-3) var(--sc-space-6); font-size: var(--sc-text-base); height: var(--sc-height-lg); }
 
 /* Variants */
 .base-button--primary {
-  background-color: var(--color-primary, #3b82f6);
-  color: #fff;
+  background-color: var(--sc-color-primary);
+  color: var(--sc-color-text-on-primary);
 }
 .base-button--primary:hover:not(:disabled) {
-  background-color: var(--color-primary-hover, #2563eb);
+  background-color: var(--sc-color-primary-hover);
 }
 
 .base-button--secondary {
   background-color: transparent;
-  color: var(--color-primary, #3b82f6);
-  border: 1px solid var(--color-primary, #3b82f6);
+  color: var(--sc-color-primary);
+  border: 1px solid var(--sc-color-primary);
 }
 .base-button--secondary:hover:not(:disabled) {
-  background-color: var(--color-primary, #3b82f6);
-  color: #fff;
+  background-color: var(--sc-color-primary);
+  color: var(--sc-color-text-on-primary);
 }
 
 .base-button--danger {
-  background-color: var(--color-danger, #ef4444);
-  color: #fff;
+  background-color: var(--sc-color-danger);
+  color: var(--sc-color-text-on-primary);
 }
 .base-button--danger:hover:not(:disabled) {
-  background-color: var(--color-danger-hover, #dc2626);
+  background-color: var(--sc-color-danger-hover);
 }
 
 .base-button--ghost {
   background-color: transparent;
-  color: var(--color-text, #374151);
+  color: var(--sc-color-text);
 }
 .base-button--ghost:hover:not(:disabled) {
-  background-color: var(--color-ghost-hover, #f3f4f6);
+  background-color: var(--sc-color-ghost-hover);
 }
 
 /* States */
@@ -116,11 +115,16 @@ const buttonClasses = computed(() => [
   cursor: not-allowed;
 }
 
+.base-button:focus-visible {
+  outline: none;
+  box-shadow: var(--sc-focus-ring);
+}
+
 /* Spinner */
 .base-button__spinner {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: var(--sc-space-3-5);
+  height: var(--sc-space-3-5);
   border: 2px solid currentColor;
   border-top-color: transparent;
   border-radius: 50%;
