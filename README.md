@@ -1,5 +1,6 @@
 # @dbvex/ui
 
+[![npm](https://img.shields.io/npm/v/@dbvex/ui?color=cb3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/@dbvex/ui)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 ![Vue 3](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-52%20tests-6e9f18?logo=vitest&logoColor=white)
@@ -22,7 +23,13 @@ Vue 3 UI component library with TypeScript strict mode, design token system, and
 | `BaseCheckbox` | Boolean and array v-model · indeterminate · aria-checked=mixed |
 | `BaseLabel` | Badge with CSS variable colors |
 
-## Quick start
+## Install
+
+```bash
+npm install @dbvex/ui
+```
+
+## Quick start (dev)
 
 ```bash
 npm install
