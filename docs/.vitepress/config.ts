@@ -2,9 +2,9 @@ import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 
 export default defineConfig({
-  title: 'shared-components',
+  title: '@dbvex/ui',
   description: 'Vue 3 UI component library',
-  base: '/shared-components/',
+  base: '/ui/',
   markdown: {
     config(md) {
       md.use(containerPreview)

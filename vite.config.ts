@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { configDefaults } from 'vitest/config'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
@@ -13,6 +14,11 @@ export default defineConfig({
       staticImport: true,
     }),
   ],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    exclude: [...configDefaults.exclude],
+  },
   optimizeDeps: {
     exclude: ['vue-demi'],
   },
@@ -20,7 +26,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'SharedComponents',
-      fileName: (format) => `shared-components.${format}.js`,
+      fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
       external: ['vue'],
