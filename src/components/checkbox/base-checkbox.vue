@@ -123,128 +123,122 @@ const isArrayValue = () => Array.isArray(props.modelValue)
 
 </script>
 
-<style lang="less">
+<style scoped>
 .base-checkbox {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: left;
-    margin-left: 5px;
-    margin-right: 5px;
-
-    &__input {
-        position: absolute;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-        width: 20px;
-        margin: 0;
-    }
-
-    &__label {
-        cursor: pointer;
-        width: 100%;
-        padding-left: 16px;
-    }
-
-    &__icon {
-        display: inline-flex;
-        align-items: center;
-        user-select: none;
-
-        & i {
-            position: absolute;
-            padding: 4px;
-        }
-
-        &::before {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            flex-grow: 0;
-            border: 1px solid var(--blue-grey-400);
-            background-color: var(--white-100);
-            border-radius: 4px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 60% 60%;
-        }
-
-        &:hover::before {
-            border: 1px solid var(--blue-grey-1500);
-        }
-
-        &:focus-within::before {
-            outline: 2px solid var(--cold-red-1200);
-            outline-offset: 2px;
-        }
-    }
-
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sc-space-2);
+  cursor: pointer;
 }
 
-.black .base-checkbox__icon:focus-within::before {
-    outline-color: var(--blue-grey-1700);
+.base-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
 }
 
-.disabled.red .base-checkbox__icon::before,
-.disabled.black .base-checkbox__icon::before {
-    border-color: var(--blue-grey-400);
-    background-color: var(--blue-grey-200);
+.base-checkbox__label {
+  font-size: var(--sc-text-sm);
+  color: var(--sc-color-text);
+  cursor: pointer;
+  user-select: none;
 }
 
-.indeterminate .base-checkbox__icon::before {
-
+.base-checkbox__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
-.checked.red .base-checkbox__icon::before,
-.indeterminate.red .base-checkbox__icon::before {
-    border-color: var(--cold-red-1200);
-    background-color: var(--cold-red-1200);
+.base-checkbox__icon i {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
-.checked.black .base-checkbox__icon::before,
-.indeterminate.black .base-checkbox__icon::before {
-    border-color: var(--blue-grey-1700);
-    background-color: var(--blue-grey-1700);
+.base-checkbox__icon::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--sc-color-border);
+  background-color: var(--sc-color-surface);
+  border-radius: var(--sc-radius-sm);
+  transition: border-color var(--sc-transition), background-color var(--sc-transition);
 }
 
+.base-checkbox:not(.disabled):hover .base-checkbox__icon::before {
+  border-color: var(--sc-color-border-hover);
+}
+
+.base-checkbox__icon:focus-within::before {
+  outline: 2px solid var(--sc-color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Red theme (default) ── */
+.red.checked .base-checkbox__icon::before,
+.red.indeterminate .base-checkbox__icon::before {
+  border-color: var(--sc-color-danger);
+  background-color: var(--sc-color-danger);
+}
+
+.red.checked:not(.disabled):hover .base-checkbox__icon::before,
+.red.indeterminate:not(.disabled):hover .base-checkbox__icon::before {
+  background-color: var(--sc-color-danger-hover);
+  border-color: var(--sc-color-danger-hover);
+}
+
+/* ── Black theme ── */
+.black.checked .base-checkbox__icon::before,
+.black.indeterminate .base-checkbox__icon::before {
+  border-color: var(--sc-color-text);
+  background-color: var(--sc-color-text);
+}
+
+/* ── SVG fill ── */
 .checked .base-checkbox__icon svg,
 .indeterminate .base-checkbox__icon svg {
-    fill: var(--white-100);
+  fill: var(--sc-color-text-on-primary);
 }
 
+/* ── Error ── */
 .error .base-checkbox__icon::before {
-    border-color: var(--cold-red-1100);
+  border-color: var(--sc-color-danger);
 }
 
-.checked.red .base-checkbox__icon:hover::before,
-.indeterminate.red .base-checkbox__icon:hover::before {
-    background-color: var(--cold-red-1300);
+/* ── Disabled ── */
+.disabled {
+  cursor: not-allowed;
 }
 
-.checked.black .base-checkbox__icon:hover::before,
-.indeterminate.black .base-checkbox__icon:hover::before {
-    background-color: var(--dark-blue-1900);
+.disabled .base-checkbox__input {
+  cursor: not-allowed;
 }
 
-.disabled.checked.red .base-checkbox__icon::before,
-.disabled.indeterminate.red .base-checkbox__icon::before,
-.disabled.checked.black .base-checkbox__icon::before,
-.disabled.indeterminate.black .base-checkbox__icon::before {
-    border-color: var(--blue-grey-400);
-    background-color: var(--blue-grey-200);
+.disabled .base-checkbox__label {
+  color: var(--sc-color-placeholder);
+  cursor: not-allowed;
+}
+
+.disabled .base-checkbox__icon::before,
+.disabled.checked .base-checkbox__icon::before,
+.disabled.indeterminate .base-checkbox__icon::before {
+  border-color: var(--sc-color-border);
+  background-color: var(--sc-color-disabled-bg);
 }
 
 .disabled .base-checkbox__icon svg {
-    fill: var(--blue-grey-400);
+  fill: var(--sc-color-placeholder);
 }
-
 </style>
