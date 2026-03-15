@@ -6,6 +6,7 @@ import BaseButton from '../../../src/components/button/base-button.vue'
 import BaseInput from '../../../src/components/input/base-input.vue'
 import BaseCheckbox from '../../../src/components/checkbox/base-checkbox.vue'
 import BaseLabel from '../../../src/components/label/base-label.vue'
+import BaseSelect from '../../../src/components/select/base-select.vue'
 import type { Theme } from 'vitepress'
 
 export default {
@@ -16,5 +17,6 @@ export default {
     app.component('BaseInput', BaseInput)
     app.component('BaseCheckbox', BaseCheckbox)
     app.component('BaseLabel', BaseLabel)
+    app.component('BaseSelect', BaseSelect)
   },
 } satisfies Theme

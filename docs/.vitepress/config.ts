@@ -19,6 +19,7 @@ export default defineConfig({
         items: [
           { text: 'BaseButton', link: '/components/button' },
           { text: 'BaseInput', link: '/components/input' },
+          { text: 'BaseSelect', link: '/components/select' },
           { text: 'BaseCheckbox', link: '/components/checkbox' },
           { text: 'BaseLabel', link: '/components/label' },
         ],
