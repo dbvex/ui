@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClasses">
-    <label v-if="label" :for="inputId" class="base-input__label">
+    <label v-if="label" :for="fieldId" class="base-input__label">
       {{ label }}
       <span v-if="required" class="base-input__required" aria-hidden="true">*</span>
     </label>
@@ -11,9 +11,9 @@
       </span>
 
       <input
-        :id="inputId"
+        :id="fieldId"
         class="base-input__field"
-        v-bind="$attrs"
+        v-bind="{ ...$attrs, ...ariaProps }"
         :value="modelValue"
         :type="type"
         :placeholder="placeholder"
@@ -30,15 +30,20 @@
       </span>
     </div>
 
-    <span v-if="errorMessage" class="base-input__error" role="alert">
-      {{ errorMessage }}
+    <span
+      v-if="errorMessage || hint"
+      :id="descriptionId"
+      :class="hasError ? 'base-input__error' : 'base-input__hint'"
+      :role="hasError ? 'alert' : undefined"
+    >
+      {{ errorMessage || hint }}
     </span>
-    <span v-else-if="hint" class="base-input__hint">{{ hint }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance } from 'vue'
+import { computed } from 'vue'
+import { useFormField } from '../../composables/useFormField'
 
 type InputType = 'text' | 'password' | 'email' | 'number' | 'search' | 'tel' | 'url'
 
@@ -72,10 +77,7 @@ const emit = defineEmits<{
   (e: 'focus', event: FocusEvent): void
 }>()
 
-const uid = getCurrentInstance()?.uid
-const inputId = computed(() => `base-input-${uid}`)
-
-const hasError = computed(() => props.error || !!props.errorMessage)
+const { fieldId, descriptionId, hasError, ariaProps } = useFormField(props)
 
 const wrapperClasses = computed(() => [
   'base-input',
