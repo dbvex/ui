@@ -114,7 +114,7 @@ function onInput(event: Event) {
   align-items: center;
   border: 1px solid var(--color-border, #d1d5db);
   border-radius: 6px;
-  background-color: #fff;
+  background-color: var(--color-input-bg, #ffffff);
   transition: border-color 0.15s;
   overflow: hidden;
 }

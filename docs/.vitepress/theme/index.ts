@@ -1,6 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import { AntDesignContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
+import './vars.css'
 import BaseButton from '../../../src/components/button/base-button.vue'
 import BaseInput from '../../../src/components/input/base-input.vue'
 import BaseCheckbox from '../../../src/components/checkbox/base-checkbox.vue'

@@ -1,0 +1,27 @@
+/* Light theme */
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-ghost-hover: #f3f4f6;
+  --color-text: #374151;
+  --color-border: #d1d5db;
+  --color-placeholder: #9ca3af;
+  --color-disabled-bg: #f3f4f6;
+  --color-input-bg: #ffffff;
+}
+
+/* Dark theme */
+.dark {
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-danger: #f87171;
+  --color-danger-hover: #fca5a5;
+  --color-ghost-hover: #1f2937;
+  --color-text: #e5e7eb;
+  --color-border: #374151;
+  --color-placeholder: #6b7280;
+  --color-disabled-bg: #1f2937;
+  --color-input-bg: #111827;
+}
