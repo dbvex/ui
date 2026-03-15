@@ -14,6 +14,7 @@
         :aria-expanded="isOpen"
         :aria-haspopup="'listbox'"
         :aria-controls="listboxId"
+        :aria-activedescendant="isOpen && focusedValue !== null ? optionId(focusedValue) : undefined"
         :disabled="disabled"
         @click="toggleOpen"
         @keydown="onTriggerKeydown"
@@ -38,6 +39,7 @@
           <li
             v-for="option in options"
             :key="String(option.value)"
+            :id="optionId(option.value)"
             role="option"
             class="base-select__option"
             :class="{
@@ -104,6 +106,7 @@ const emit = defineEmits<{
 
 const { fieldId, descriptionId, hasError, ariaProps } = useFormField(props)
 const listboxId = computed(() => `${fieldId.value}-listbox`)
+const optionId = (value: string | number) => `${fieldId.value}-opt-${String(value)}`
 
 const isOpen = ref(false)
 const focusedValue = ref<string | number | null>(props.modelValue ?? null)

@@ -35,6 +35,7 @@
       :id="descriptionId"
       :class="hasError ? 'base-input__error' : 'base-input__hint'"
       :role="hasError ? 'alert' : undefined"
+      :aria-live="hasError ? 'assertive' : 'polite'"
     >
       {{ errorMessage || hint }}
     </span>
