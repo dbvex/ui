@@ -15,6 +15,12 @@ export default defineConfig({
     nav: [{ text: 'Components', link: '/components/' }],
     sidebar: [
       {
+        text: 'Examples',
+        items: [
+          { text: 'Registration Form', link: '/examples/form' },
+        ],
+      },
+      {
         text: 'Components',
         items: [
           { text: 'BaseButton', link: '/components/button' },
