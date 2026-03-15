@@ -1,3 +1,4 @@
 export { default as BaseCheckbox } from './components/checkbox/base-checkbox.vue'
 export { default as BaseLabel } from './components/label/base-label.vue'
 export { default as BaseButton } from './components/button/base-button.vue'
+export { default as BaseInput } from './components/input/base-input.vue'
