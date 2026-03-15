@@ -1,3 +1,5 @@
+export { useFormField } from './composables/useFormField'
+export type { FormFieldProps } from './composables/useFormField'
 export { default as BaseCheckbox } from './components/checkbox/base-checkbox.vue'
 export { default as BaseLabel } from './components/label/base-label.vue'
 export { default as BaseButton } from './components/button/base-button.vue'
