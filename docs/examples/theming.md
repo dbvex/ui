@@ -48,4 +48,4 @@ Override at the root level and every component inherits the change:
 | `--sc-shadow-md` | multi-layer | Dropdown shadow |
 | `--sc-focus-ring` | `0 0 0 3px …` | Keyboard focus outline |
 
-Full token reference: [`src/core/tokens.css`](https://github.com/bizhev/shared-components/blob/main/src/core/tokens.css)
+Full token reference: [`src/core/tokens.css`](https://github.com/dbvex/ui/blob/main/src/core/tokens.css)

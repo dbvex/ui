@@ -33,7 +33,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/bizhev/shared-components' },
+      { icon: 'github', link: 'https://github.com/dbvex/ui' },
     ],
   },
 })

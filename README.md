@@ -1,4 +1,4 @@
-# shared-components
+# @dbvex/ui
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 ![Vue 3](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js&logoColor=white)
@@ -8,7 +8,7 @@
 
 Vue 3 UI component library with TypeScript strict mode, design token system, and accessibility built-in.
 
-**[Live docs →](https://bizhev.github.io/shared-components/)**
+**[Live docs →](https://dbvex.github.io/ui/)**
 
 ---
 

@@ -1,9 +1,9 @@
 {
-  "name": "@bizhev/shared-components",
+  "name": "@dbvex/ui",
   "version": "1.0.0",
   "type": "module",
   "description": "Vue 3 UI component library — TypeScript strict, design tokens, a11y",
-  "author": "Dolet Bizhev",
+  "author": "dbvex",
   "license": "MIT",
   "keywords": [
     "vue3",
@@ -14,9 +14,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bizhev/shared-components"
+    "url": "https://github.com/dbvex/ui"
   },
-  "homepage": "https://bizhev.github.io/shared-components/",
+  "homepage": "https://dbvex.github.io/ui/",
   "files": [
     "dist"
   ],
