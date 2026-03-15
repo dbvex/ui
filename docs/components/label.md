@@ -4,11 +4,11 @@ Badge/label component with customizable background and text colors via CSS varia
 
 ## Usage
 
-```vue
-<BaseLabel value="Active" />
-<BaseLabel value="Draft" background-color="blue-grey-200" text-color="blue-grey-1200" />
-<BaseLabel><slot>Custom content</slot></BaseLabel>
-```
+:::preview
+
+demo-preview=../demos/LabelBasic.vue
+
+:::
 
 ## Props
 
@@ -17,3 +17,9 @@ Badge/label component with customizable background and text colors via CSS varia
 | `value` | `string` | `''` | Label text (also settable via default slot) |
 | `backgroundColor` | `string` | `blue-grey-200` | CSS variable name for background |
 | `textColor` | `string` | `blue-grey-1200` | CSS variable name for text color |
+
+## Slots
+
+| Slot | Description |
+|------|-------------|
+| `default` | Custom label content (overrides `value` prop) |

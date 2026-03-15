@@ -4,17 +4,11 @@ Checkbox with boolean and array v-model, indeterminate state, and theme colors.
 
 ## Usage
 
-```vue
-<!-- Boolean -->
-<BaseCheckbox v-model="agreed">I agree to the terms</BaseCheckbox>
+:::preview
 
-<!-- Array (multiple checkboxes) -->
-<BaseCheckbox v-model="selected" value="vue">Vue</BaseCheckbox>
-<BaseCheckbox v-model="selected" value="react">React</BaseCheckbox>
+demo-preview=../demos/CheckboxBasic.vue
 
-<!-- Indeterminate -->
-<BaseCheckbox :indeterminate="someSelected" v-model="allSelected">Select all</BaseCheckbox>
-```
+:::
 
 ## Props
 

@@ -61,5 +61,7 @@ demo-preview=../demos/SelectCustomOption.vue
 interface SelectOption<T = string | number> {
   label: string
   value: T
+  disabled?: boolean   // option is visible but not selectable
+  group?: string       // group label (rendered as a divider header)
 }
 ```
